@@ -55,21 +55,26 @@ Examples of correct clustering:
   ✓ "Fed signals rate cut" + "Tech stocks rally on Fed news" → SAME cluster,
      not two
 
-SECOND-ORDER RULE: If article B is a downstream/derivative consequence of
-article A — same week, same root cause — they belong in the SAME cluster, even
-if their primary subjects (countries, companies, sectors) differ. Examples:
+DISTINCT SIGNAL RULE: Cluster only when articles are restatements of the same
+underlying event/announcement. If an article carries a NEW data point, a NEW
+analytical angle, or a NEW stakeholder's substantive response — keep it
+separate, even if it traces back to the same root cause:
 
-  ✓ "Trump rejects Iran peace counteroffer" + "China inflation tops estimates
-     as Iran war drives energy costs" → SAME cluster. Both downstream of the
-     Iran/oil narrative, even though one is geopolitics and one is macro data.
-  ✓ "Nvidia AI capex hits $40B" + "Big Tech AI spending depriving investors
-     of buybacks" → SAME cluster. Both downstream of the AI capex narrative.
-  ✗ Two clearly distinct stories that happen to mention the same country or
-     company in passing → SEPARATE clusters.
+  ✗ "Trump rejects Iran peace counteroffer" + "China inflation tops estimates
+     as Iran war drives energy costs" → SEPARATE. The first is the geopolitical
+     trigger; the second carries a distinct macro data point (China CPI print)
+     that the first doesn't. The reader gains from both.
+  ✗ "Nvidia AI capex hits $40B" + "Big Tech AI spending starves buybacks" →
+     SEPARATE. First is a vendor-side capex story; second is a Goldman analysis
+     on shareholder-return dynamics. Different mechanism, different audience.
+  ✓ "Trump rejects Iran offer" + "Iran says it will 'never bow' to Trump" →
+     SAME cluster. Both reporting the same diplomatic exchange, no new data.
+  ✓ "Reuters: Cerebras IPO range raised" + "WSJ: Cerebras ups IPO target on
+     demand" → SAME cluster. Same announcement, different outlets.
 
-When in doubt, cluster. Duplicates leaking through is the worst failure mode —
-much worse than over-clustering, because over-clustering at most loses one of
-two redundant articles, while under-clustering wastes a slot.
+The bar for clustering is high: pure duplicates and reactionary rewrites only.
+When in doubt, keep them separate — distinct angles are more valuable than
+slot conservation.
 
 ═══════════════════════════════════════════════
 2) SCORE 0-10 for THIS reader
@@ -100,6 +105,12 @@ Anti-patterns to PENALIZE (cap at 6 even if topic matches):
   - Press-release rewrites and earnings-day recaps
   - Lifestyle pieces masquerading as health/science
   - Anything where the headline is the whole story
+  - Vendor- or consultant-driven "study/report finds" pieces where the source is
+    a firm with a commercial stake in the conclusion (cap at 5). Example:
+    "IBM study finds most companies now have a chief AI officer" — IBM sells
+    AI consulting, so the survey is marketing dressed as journalism.
+    EXCEPTION: peer-reviewed academic studies, government data releases, or
+    research from independent labs are NOT vendor PR — score on merit.
 
 Be ruthless. Most candidates should land 4-7. 8+ should feel earned.
 

@@ -71,6 +71,16 @@ def send_digest(window: Window, picks: list[Pick], now_label: str) -> None:
         r.raise_for_status()
 
 
+HEADLINE_MAX = 100
+
+
+def _truncate_headline(title: str) -> str:
+    if len(title) <= HEADLINE_MAX:
+        return title
+    cut = title[:HEADLINE_MAX].rsplit(" ", 1)[0].rstrip(",;:—-")
+    return cut + "…"
+
+
 def _format_digest(window: Window, picks: list[Pick], now_label: str) -> str:
     header = f"{window.emoji} <b>{html.escape(window.label)}</b> · {html.escape(now_label)}"
     if not picks:
@@ -78,7 +88,7 @@ def _format_digest(window: Window, picks: list[Pick], now_label: str) -> str:
 
     lines = [header, ""]
     for i, p in enumerate(picks, 1):
-        title = html.escape(p.article.title)
+        title = html.escape(_truncate_headline(p.article.title))
         source = html.escape(p.article.source)
         blurb = html.escape(p.blurb)
         link = html.escape(p.article.link, quote=True)
