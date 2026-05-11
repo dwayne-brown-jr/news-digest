@@ -86,6 +86,9 @@ def fetch_window(lookback_hours: int, feeds: list[Feed] | None = None) -> list[A
             link = entry.get("link", "")
             if not title or not link:
                 continue
+            suffix = f" - {feed.name}"
+            if title.endswith(suffix):
+                title = title[:-len(suffix)].rstrip()
             summary = _strip_html(entry.get("summary") or entry.get("description") or "")
             if len(summary) > 600:
                 summary = summary[:600].rsplit(" ", 1)[0] + "…"

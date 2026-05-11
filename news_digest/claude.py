@@ -52,11 +52,24 @@ Examples of correct clustering:
   ✓ "Oil jumps on Iran tensions" + "China inflation tops estimates as Iran war
      drives energy" → SAME cluster (both anchored to Iran-driven energy spike)
   ✓ "OpenAI ships new model" + "Sam Altman: GPT-X is here" → SAME cluster
-  ✗ "Fed signals rate cut" + "Tech stocks rally on Fed news" → SAME cluster,
+  ✓ "Fed signals rate cut" + "Tech stocks rally on Fed news" → SAME cluster,
      not two
 
-When in doubt, cluster. Single-article clusters are fine, but duplicates leaking
-through is the worst failure mode.
+SECOND-ORDER RULE: If article B is a downstream/derivative consequence of
+article A — same week, same root cause — they belong in the SAME cluster, even
+if their primary subjects (countries, companies, sectors) differ. Examples:
+
+  ✓ "Trump rejects Iran peace counteroffer" + "China inflation tops estimates
+     as Iran war drives energy costs" → SAME cluster. Both downstream of the
+     Iran/oil narrative, even though one is geopolitics and one is macro data.
+  ✓ "Nvidia AI capex hits $40B" + "Big Tech AI spending depriving investors
+     of buybacks" → SAME cluster. Both downstream of the AI capex narrative.
+  ✗ Two clearly distinct stories that happen to mention the same country or
+     company in passing → SEPARATE clusters.
+
+When in doubt, cluster. Duplicates leaking through is the worst failure mode —
+much worse than over-clustering, because over-clustering at most loses one of
+two redundant articles, while under-clustering wastes a slot.
 
 ═══════════════════════════════════════════════
 2) SCORE 0-10 for THIS reader
